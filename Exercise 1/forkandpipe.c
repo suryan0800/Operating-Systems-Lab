@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<sys/types.h>
+#include<string.h>
 
 void main()
 {
@@ -10,27 +11,30 @@ void main()
 		exit(1);
 	}
 	pid_t pd = fork();
-	
+	char str[100];
 
 
-	if(pd  >0)
+	if(pd > 0)
 	{	
 		
 		printf("I am Parent : %d ",getpid());
 		printf("My Parent : %d \n",getppid());
-		write(p[1],"Hello ",6);
+        printf("Enter Some Char \n");
+        gets(str);
+       
+		write(p[1],str,strlen(str));
 		sleep(2);
 		printf("Parent Ended");
 	
 	}
 	else if(pd ==0)
 	{
-		char aa[6];
+		char aa[100];
 		printf("I am Child : %d ",getpid());
 	
 		printf("My Parent : %d \n",getppid());
-		read(p[0],aa,6);
-		printf("The data is : %s",aa);
+		read(p[0],aa,100);
+		printf("The data is : %s \n",aa);
 
 	}
 	else 
