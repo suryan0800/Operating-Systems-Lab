@@ -40,22 +40,31 @@ void main ()
         }
     }
 
-   
+    
 
     int k = 0;
     int h = 0;
-    int sm = 0;
+    int sm = arr[0][0];
     int l = 0;
-    for(int i = 0 ; i < total ; i++)
+    for(int i = 0 ; (h < n || l < k) ; i++)
     {
         if( i == arr[h][0] && h < n)
         {
             a[k]=h;
             k++;
             h++;
-
+        
+        }
+      
+        if(sm == i && l == k)
+        {
+            sm = sm + 1;
             
-            for(int g =l;g<k-1;g++)
+        }        
+        else if( sm == i && l < k)
+        {
+            
+          for(int g =l;g<k-1;g++)
             {                     
                 for (j = l; j < k-g-1+l; j++)  
                 {
@@ -68,50 +77,26 @@ void main ()
                     }
                 }
             } 
-
-            
-          
-        }
-      
-
-         
-        if( sm == i )
-        {
-            
-          
-          sm += arr[a[l]][1];
-            
-          
-            l++;
-        
-  
-            
+            sm += arr[a[l]][1];
+            arr[a[l]][2] = sm;
+            printf("Sum : %d Process : %f \n",sm,arr[a[l]][2]);
+		    arr[a[l]][3] = arr[a[l]][2] - arr[a[l]][0];
+		    arr[a[l]][4] = arr[a[l]][3] / arr[a[l]][1];
+		    tatavg =tatavg + arr[a[l]][3];
+		    trbytsavg = trbytsavg + arr[a[l]][4];
+            l++;           
             //i = i + arr[h][1];
-            
         
-           
          } 
          
 
         }
         
-        
+       
     for(int i =0; i<n; i++)
     {
         printf("%d \n",a[i]);
     }
-  
-    for(int i=0;i<n;i++)
-    {
-		sum = sum + arr[a[i]][1];
-		arr[a[i]][2] = sum;
-
-		arr[a[i]][3] = arr[a[i]][2] - arr[a[i]][0];
-		arr[a[i]][4] = arr[a[i]][3] / arr[a[i]][1];
-		tatavg =tatavg + arr[a[i]][3];
-		trbytsavg = trbytsavg + arr[a[i]][4];
-		
-	}
 
 	tatavg = tatavg / n;
 	trbytsavg = trbytsavg / n;
