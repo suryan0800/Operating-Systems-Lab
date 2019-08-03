@@ -6,7 +6,7 @@ void main ()
 	int n;
 	printf("Enter No of Processes :");
 	scanf("%d",&n);
-	float arr[n][7];
+	float arr[20][7];
     int total = 0;
 	int j;
 	int sum = 0;
@@ -47,12 +47,12 @@ void main ()
 
    
 
-    int k , g;
+    int k = 0;
     int h = 0;
-    float sm = 0;
+    float sm = arr[0][0];
     int l = 0;
     float service[n];
-    int queue[total];   
+    int queue[50];   
     int q = 0;
     int token;
     int flag = 0;
@@ -64,7 +64,7 @@ void main ()
     }
 
     printf("%d \n",total);
-    for(int i = 0 ; i < total ; i++)
+    for(int i = 0 ; ( h < n || l < q) ; i++)
     {
         if(arr[h][0] == i && h < n)
         {
@@ -85,7 +85,12 @@ void main ()
             flag = 0;
         }
       
-        if(sm == i && l < q)
+        if(sm == i && l == q)
+        {
+            sm = sm + 1;
+            printf("HEll");
+        }
+        else if(sm == i && l < q)
         {
 
             for(int g =l;g<q-1;g++)
@@ -133,6 +138,18 @@ void main ()
                 sm += service[queue[l]];
                 service[queue[l]] = 0;
                 arr[queue[l]][3] = sm;
+
+                arr[queue[l]][4] = arr[queue[l]][3] - (arr[queue[l]][0] + arr[queue[l]][1]);
+        
+       
+		        arr[queue[l]][5] = arr[queue[l]][3] - arr[queue[l]][0];
+
+		        arr[queue[l]][6] = arr[queue[l]][5] / arr[queue[l]][1];
+                waitavg = waitavg + arr[queue[l]][4];
+		        tatavg =tatavg + arr[queue[l]][5];
+		        trbytsavg = trbytsavg + arr[queue[l]][6];
+
+
                 l++;
                 printf("Finish Time : %f \n",sm);
                 
@@ -140,30 +157,7 @@ void main ()
         }
 
     }
-    
- 
-   for(int i =0; i<n; i++)
-    {
-        printf("%f \n",arr[i][0]);
-    }
-  
-    for(int i=0;i<n;i++)
-    {
-		 
-        arr[i][4] = arr[i][3] - (arr[i][0] + arr[i][1]);
-        
-       
-		arr[i][5] = arr[i][3] - arr[i][0];
-
-		arr[i][6] = arr[i][4] / arr[i][1];
-        waitavg = waitavg + arr[i][4];
-		tatavg =tatavg + arr[i][5];
-		trbytsavg = trbytsavg + arr[i][6];
-        
-		
-	}
-
-   
+     
     waitavg = waitavg /n;
 	tatavg = tatavg / n;
 	trbytsavg = trbytsavg / n;
