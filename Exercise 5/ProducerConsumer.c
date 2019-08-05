@@ -41,12 +41,12 @@ void *Consumer()
 void main()
 {
     pthread_t produce,consume;
-    int a = 0,b = 1;
+    
     sem_init(&sem_produce,0,1);
-    sem_init(&sem_consume,0,1);
+    sem_init(&sem_consume,0,0);
 
-    pthread_create(&produce,NULL,Producer,(void *)a);
-    pthread_create(&consume,NULL,Consumer,(void *)b);
+    pthread_create(&produce,NULL,Producer,(void *)0);
+    pthread_create(&consume,NULL,Consumer,(void *)1);
     
     pthread_join(produce,NULL);
     pthread_join(consume,NULL);
