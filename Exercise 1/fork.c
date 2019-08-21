@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<sys/types.h>
+#include<unistd.h>
 
 void main()
 {
@@ -13,7 +14,7 @@ void main()
 		
 		printf("I am Parent : %d \n",getpid());
 		printf("My Parent : %d \n",getppid());
-		
+		sleep(1);
 		printf("Parent Ended \n");
 	
 	}

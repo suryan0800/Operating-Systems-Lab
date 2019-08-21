@@ -1,5 +1,5 @@
 #include<stdio.h>
-
+#include<string.h>
 //Inter Process Communication using Shared Memory
 #include <sys/ipc.h> 
 #include <sys/shm.h> 
@@ -8,7 +8,8 @@
 void main()
 {
     char *str;
-    key_t key = ftok("shmfile",65);
+    //key_t key = ftok("shmfile",65);
+    key_t key = 3333;
     int shmid;
     if((shmid = shmget(key,27,0666|IPC_CREAT)) < 0)
     {
