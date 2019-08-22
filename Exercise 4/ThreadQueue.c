@@ -47,8 +47,8 @@ void main()
     
    
 
-    pthread_create(&produce,NULL,Producer,(void *)0);
-    pthread_create(&consume,NULL,Consumer,(void *)1);
+    pthread_create(&produce,NULL,Producer,NULL);
+    pthread_create(&consume,NULL,Consumer,NULL);
     
     pthread_join(produce,NULL);
     pthread_join(consume,NULL);

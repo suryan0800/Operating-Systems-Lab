@@ -88,7 +88,7 @@ void main ()
         if(sm == i && l == q)
         {
             sm = sm + 1;
-            printf("HEll");
+         //   printf("HEll");
         }
         else if(sm == i && l < q)
         {
