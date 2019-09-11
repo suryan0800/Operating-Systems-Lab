@@ -6,8 +6,8 @@ void main()
     int p = 5;
     int r = 3;
 
-  
-
+    int request[] = {2,2,1};
+    int req = 0;
     
      int   alloc[5][3]= { { 0, 1, 0 }, 
                         { 2, 0, 0 }, 
@@ -36,7 +36,34 @@ void main()
         
         }
     }
+    int flag2=0;
+    for(int i =0; i < r; i++)
+    {
+        if(request[i] > need[req][i])
+        {
+            flag2 = 1;
+            break;
+        }
+        if(request[i] > available[i])
+        {
+            flag2 = 1;
+            break;
+        }
+    }
 
+    if(flag2 == 1)
+    {
+        printf("Process cannot request more than what it needs or resource not available \n");
+        exit(0);
+    }
+    
+    for(int i = 0; i < r; i ++)
+    {
+        available[i] -= request[i];
+        need[req][i] -= request[i];
+        alloc[req][i] += request[i];
+    }
+    
     for(int i = 0 ; i < p ; i++)
     {
         finish[i] = 0;
@@ -75,14 +102,19 @@ void main()
         }
     }
 
+    if(index == 5)
+    {
+    printf("No Deadlock \n Safe Sequence   ");
     for(int i = 0; i < p; i++)
     {
         printf("%d  ", seq[i]);
     }
+    }
+    else
+    {
+        printf("Deadlock occured");
+    }
 }
-
-
-
 
 
 

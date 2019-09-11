@@ -57,7 +57,7 @@ void main()
                     index++;
                     for(int l = 0; l < r; l++)
                     {
-                        available[l] += need[j][l];
+                        available[l] += alloc[j][l];
                     }
                     finish[j] = 1;
                     flag1 = 0;
