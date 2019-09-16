@@ -9,8 +9,8 @@ int data,reader_count = 0;
 
 void *Reader(void *arg)
 {
-    	
-        sleep(0.5);
+    	while(1){
+       
         sem_wait(&sem_read);
 	reader_count ++;   
 	if(reader_count == 1)
@@ -31,20 +31,22 @@ void *Reader(void *arg)
 	}
 	
         sem_post(&sem_read);
-    
+     sleep(3);
+    }
 }
 
 void *Writer(void *arg)
 {
  
-    	 
+    while(1){	 
         sem_wait(&sem_write);
        
 	data = rand();              
         printf("Data Written : %d by Writer : %d \n",data,(int)arg);
-	sleep(1);
+	
         sem_post(&sem_write);
-        
+     sleep(4); 
+    }   
 }
 
 void main()
