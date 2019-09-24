@@ -66,9 +66,10 @@ void main()
         }
     }
 
+    printf("Index : %d \n",index);
     if(index == 5)
     {
-    printf("No Deadlock \n Safe Sequence");
+    printf("No Deadlock \n Safe Sequence  ");
     for(int i = 0; i < p; i++)
     {
         printf("%d  ", seq[i]);
