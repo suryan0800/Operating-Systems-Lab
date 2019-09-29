@@ -59,7 +59,7 @@ void main()
 	{
    		 pthread_create(&writer[i],NULL,Writer,(void *)i);
 		 pthread_create(&reader[i],NULL,Reader,(void *)i); 
-    	}
+    }
 	
 	
 	for(int j = 0;j < 5; j++)

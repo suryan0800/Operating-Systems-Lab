@@ -3,8 +3,8 @@
 
 void main()
 {
-    int p = 5;
-    int r = 3;
+    int p = 5; //Processes
+    int r = 3; //Resources
 
   
 

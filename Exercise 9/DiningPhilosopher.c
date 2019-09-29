@@ -8,7 +8,7 @@ sem_t mutex[5],room;
 
 void *eat(void *j)
 {
-  while(1)
+while(1)
    {
         int n = (int)j;
 

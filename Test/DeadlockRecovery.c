@@ -1,16 +1,14 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-int index = 0;
+
+int ind = 0 ;
 
 
 int  checkSafeState(int p,int r,int alloc[][3],int need[][3], int available[],int seq[],int finish[])
 {
     
-    for(int i = 0 ; i < p ; i++)
-    {
-        finish[i] = 0;
-    }
+   
     int flag = 0;
     int flag1  = 0;
     while(flag1 == 0)
@@ -32,8 +30,8 @@ int  checkSafeState(int p,int r,int alloc[][3],int need[][3], int available[],in
 
                 if(flag == 0 )
                 {
-                    seq[index] = j;
-                    index++;
+                    seq[ind] = j;
+                    ind++;
                     for(int l = 0; l < r; l++)
                     {
                         available[l] += alloc[j][l];
@@ -45,7 +43,7 @@ int  checkSafeState(int p,int r,int alloc[][3],int need[][3], int available[],in
         }
     }
     
-    if(index == 5)
+    if(ind == 5)
     {
     printf("No Deadlock \n Safe Sequence \n");
     for(int i = 0; i < p; i++)
@@ -59,7 +57,7 @@ int  checkSafeState(int p,int r,int alloc[][3],int need[][3], int available[],in
         printf("Deadlock occured \n");
     }
 
-    return index;
+    return ind;
 }
 
 
@@ -72,7 +70,7 @@ void main()
    
 
     
-  /*   int   alloc[5][3]= { { 0, 1, 0 }, 
+   /*  int   alloc[5][3]= { { 0, 1, 0 }, 
                         { 2, 0, 0 }, 
                         { 3, 0, 2 }, 
                         { 2, 1, 1 }, 
@@ -86,7 +84,7 @@ void main()
                       { 4, 3, 1 } };
 */
 
-    int   alloc[5][3]= { { 0, 1, 0 }, 
+   int   alloc[5][3]= { { 0, 1, 0 }, 
                         { 2, 0, 0 }, 
                         { 3, 0, 2 }, 
                         { 2, 1, 1 }, 
@@ -100,14 +98,21 @@ void main()
                       { 0, 1, 3 }, 
                       { 4, 3, 1 } };
 
+
     int available[3] =  { 3, 3, 2 }; 
 
     int seq[p], finish[p];
 
+    for(int i = 0 ; i < p ; i++)
+    {
+        finish[i] = 0;
+    }
+    
+
     checkSafeState(p,r,alloc,need,available,seq,finish);
-      printf("HEllo %d\n", index);
+      printf("HEllo %d\n", ind);
          printf("HEllo %d\n", p);
-    if(index < p)
+    if(ind < p)
     {
        
         for(int  i=0; i < p; i++)
@@ -121,10 +126,12 @@ void main()
                     alloc[i][j] = 0;
                     
                 }
+
+                
                 checkSafeState(p,r,alloc,need,available,seq,finish);
-                 printf("HEllo %d\n", index);
+                 printf("HEllo %d\n", ind);
          printf("HEllo %d\n", p);
-                if(index == p)
+                if(ind == p)
                 break;
             }
         }
@@ -134,11 +141,6 @@ void main()
     
     
 }
-
-
-
-
-
 
 
 
